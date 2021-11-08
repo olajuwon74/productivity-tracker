@@ -1,0 +1,106 @@
+body{
+    background-color: #E1E4ED;
+}
+#yellow{
+    color: #FFAC33;
+}
+nav{
+    position: sticky;
+}
+.navbar{
+    color: #E1E4ED;
+    padding-left: 43px;
+    padding-right: 43px;
+}
+.d-inline-block{
+    border-radius: 50%;
+}
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 306px;
+    background-color: #FFAC33;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    padding-top: 65px;
+  }
+  
+  /* Sidebar links */
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    padding-left: 43px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: #FFCC4D;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  div.content {
+    margin-left: 300px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+#target{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+    background-color:#77B255;
+    border-color: white;
+    border-radius: 50%;
+    border-width: 5px;
+    height: 10px;
+    width: 10px;
+}
+.content{
+    margin-top: 22px;
+}
+#parent { white-space: nowrap; }
+.child { display: inline-block; }
+
+.child{
+ margin-right: 20%;
+}
+button{
+    width:100px;
+    height: 36px;
+    background-color: #FFAC33;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+table{
+    margin-top: 70px;
+}
