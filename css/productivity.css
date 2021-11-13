@@ -1,8 +1,8 @@
 body{
-    background-color: #E1E4ED;
+    background: #E1E4ED;
 }
 #yellow{
-    color: #FFAC33;
+    color: #03506F;
 }
 
 
@@ -18,7 +18,7 @@ body{
     margin: 0;
     padding: 0;
     width: 306px;
-    background-color: #FFAC33;
+    background-color: #0A043C;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -36,7 +36,7 @@ body{
   
   /* Active/current link */
   .sidebar a.active {
-    background-color: #FFCC4D;
+    background-color: #03506F;
     color: white;
   }
   
@@ -71,6 +71,19 @@ body{
     float: none;
   }
 }
+
+#target{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  background-color:#77B255;
+  border-color: white;
+  border-radius: 50%;
+  border-width: 5px;
+  height: 10px;
+  width: 10px;
+}
+
 #target-green{
     display: inline-block;
     vertical-align: middle;
@@ -121,14 +134,18 @@ button{
 .top-left{
     width: 35%px;
     height: 200px;
-    background-color: #FFCC4D;
+    background-color: #ffffff;
     padding: 5px;
+    box-shadow: 0 0 10px #E1E4ED;
+    border-radius: 10px;
 }
 .top-right{
     width: 35%px;
     height: 200px;
-    background-color: #FFCC4D;
+    background-color: #ffffff;
     padding: 5px;
+    box-shadow: 0 0 10px #E1E4ED;
+    border-radius: 10px;
 }
 .grid-container-2 {
     display: grid;
@@ -138,9 +155,12 @@ button{
 }
 .bottom{
     width: 100%;
-    background-color: #FFCC4D;
+    background-color: #ffffff;
     height: 300px;
     padding: 15px;
+    box-shadow: 0 0 10px #E1E4ED;
+    border-radius: 10px;
+    
 
 }
 /* .sticky {
@@ -148,3 +168,9 @@ button{
     top: 0;
     width: 100%;
   } */
+  .img-chart{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 42%;
+  }

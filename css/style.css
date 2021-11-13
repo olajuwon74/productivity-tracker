@@ -2,7 +2,7 @@ body{
     background-color: #E1E4ED;
 }
 #yellow{
-    color: #FFAC33;
+    color: #03506F;
 }
 nav{
     position: sticky;
@@ -19,7 +19,7 @@ nav{
     margin: 0;
     padding: 0;
     width: 306px;
-    background-color: #FFAC33;
+    background-color: #0A043C;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -37,7 +37,7 @@ nav{
   
   /* Active/current link */
   .sidebar a.active {
-    background-color: #FFCC4D;
+    background-color: #03506F;
     color: white;
   }
   
@@ -95,7 +95,7 @@ nav{
 button{
     width:100px;
     height: 36px;
-    background-color: #FFAC33;
+    background-color: #03506F;
     text-decoration: none;
     border: none;
     border-radius: 5px;

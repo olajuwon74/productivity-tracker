@@ -2,7 +2,7 @@ body{
     background-color: #E1E4ED;
 }
 #yellow{
-    color: #FFAC33;
+    color: #03506F;
 }
 nav{
     position: sticky;
@@ -19,7 +19,7 @@ nav{
     margin: 0;
     padding: 0;
     width: 306px;
-    background-color: #FFAC33;
+    background-color: #0A043C;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -37,7 +37,7 @@ nav{
   
   /* Active/current link */
   .sidebar a.active {
-    background-color: #FFCC4D;
+    background-color: #03506F;
     color: white;
   }
   
@@ -83,6 +83,30 @@ nav{
     height: 10px;
     width: 10px;
 }
+
+#target-green{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  background-color:#77B255;
+  border-color: white;
+  border-radius: 50%;
+  border-width: 5px;
+  height: 10px;
+  width: 10px;
+}
+#target-red{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  background-color:#DD2E44;
+  ;
+  border-color: white;
+  border-radius: 50%;
+  border-width: 5px;
+  height: 10px;
+  width: 10px;
+}
 .content{
     margin-top: 22px;
 }
@@ -95,7 +119,7 @@ nav{
 button{
     width:100px;
     height: 36px;
-    background-color: #FFAC33;
+    background-color: #03506F;
     text-decoration: none;
     border: none;
     border-radius: 5px;
