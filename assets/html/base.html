@@ -23,9 +23,9 @@
         </nav>
 
         <div class="sidebar">
-            <a href="{{ url_for('history') }}">History</a>
-            <a href="{{ url_for('productivity') }}">Productivity<span id="target"></span></a>
-            <a class="active" href="#">View Logs</a>
+            <a class="{{ 'active' if request.path==url_for('history') else 'inactive' }}" href="{{ url_for('history') }}">History</a>
+            <a class="{{ 'active' if request.path==url_for('productivity') else 'inactive' }}" href="{{ url_for('productivity') }}">Productivity<span id="target"></span></a>
+            <a class="{{ 'active' if request.path==url_for('view') else 'inactive' }}" href="{{ url_for('view') }}">View Logs</a>
         </div>
 
         <main>

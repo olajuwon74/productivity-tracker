@@ -28,12 +28,7 @@ def productivity():
 
 @app.route("/")
 def home():
+    """
+    Loads the home page
+    """
     return redirect(url_for('view'))
-
-@app.route("/base")
-def base():
-    return render_template('html/base.html')
-
-
-# 1. link pages/routes to html files
-# 2. link css/javascript/images(assets) to html
