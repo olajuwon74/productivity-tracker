@@ -104,3 +104,9 @@ button{
 table{
     margin-top: 70px;
 }
+
+thead {
+  position: sticky;
+  top: 60px;
+  background-color: #fff;
+}

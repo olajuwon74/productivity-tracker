@@ -1,26 +1,11 @@
 {% extends "html/base.html" %}
+{% from "html/macro.html" import filter_by_date %}
 {% block main %}
         <div class="grid-container">
             
           <!-- Page content -->
           <div class="content">
-            <div id="parent">
-                <div class="child"> <label for="start">Start date:</label>
-
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31"></div>
-                   
-
-                <div class="child"><label for="start">End date:</label>
-
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31"></div>
-        
-                <button type="button" class="">Search</button>
-
-            </div>
+            {{ filter_by_date() }}
 
             <table class="table table-hover">
                 <thead>
