@@ -32,51 +32,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-green"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-red"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-red"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-red"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-red"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-            
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-red"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-                
-                  <tr>
-                    <td>10/11/2020 12:55</td>
-                    <td> <span id="target-green"></span> </td>
-                    <td>Emails<br> Office portal</td>
-                    <td><a id="yellow" href="#log">View logs</a></td>
-                  </tr>
-                 
+                  {% for day, record in daily_history.items() %}
+                    <tr>
+                      <td>{{ day }}</td>
+                      <td> <span id="target-green"></span>{{ record.get("status") }}</td>
+                      <td style="white-space: pre-line">{{ record.get("sequence") }}</td>
+                      <td><a id="yellow" href="#log">View logs</a></td>
+                    </tr>
+                  {% endfor %}
                   
                 </tbody>
               </table>
