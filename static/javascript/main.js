@@ -26,3 +26,22 @@ var modal = null
      modal = null
    }
  }
+
+function filterByDate(date) {
+  var startDate = document.getElementById("trip_start").value;
+  var endDate = document.getElementById("trip_end").value;
+
+  if (startDate === "" && endDate === "") {
+    alert("Please enter a start and end date");
+    return;
+  }
+  else if (startDate > endDate) {
+    alert("Start date must be before end date");
+    return;
+  }
+  window.open(window.location.origin+window.location.pathname+`?startDate=${startDate}&endDate=${endDate}`,"_self");
+  
+}
+
+//  add click event listener to filter_by_date id
+document.getElementById("filter_by_date").addEventListener("click", filterByDate);

@@ -1,5 +1,5 @@
-{% extends "html/base.html" %}
-{% from "html/macro.html" import filter_by_date %}
+{% extends "base.html" %}
+{% from "macro.html" import filter_by_date %}
 {% block main %}
 <!-- Image and text -->
 
@@ -30,9 +30,11 @@
         {% endfor %}
 
         <tr>
-          {% for col_name in header %}
-            <td>{{ next_line.get(col_name) }}</td>
-          {% endfor %}
+          {% if next_line %}
+            {% for col_name in header %}
+              <td>{{ next_line.get(col_name) }}</td>
+            {% endfor %}
+          {% endif %}
         </tr>
         
         

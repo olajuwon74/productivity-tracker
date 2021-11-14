@@ -1,27 +1,10 @@
-{% extends "html/base.html" %}
+{% extends "base.html" %}
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/productivity.css')}}">
 {% endblock %}
 {% block main %}  
           <!-- Page content -->
           <div class="content">
-            <!-- <div id="parent">
-                <div class="child"> <label for="start">Start date:</label>
-
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31"></div>
-                   
-
-                <div class="child"><label for="start">End date:</label>
-
-                    <input type="date" id="start" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31"></div>
-        
-                <button type="button" class="">Search</button>
-
-             </div> -->
 
              <div class="grid-container">
 
@@ -31,7 +14,7 @@
                 </div>
 
                 <div class="top-right">
-                    <H3>Productivity Chart</H3>
+                    <H3>Sequence Chart</H3>
                     <img class="img-chart" src="{{ url_for('static', filename='images/Group.png') }}" alt="group">
                 </div>
             </div>
@@ -49,7 +32,4 @@
 
           </div>
 
-{% endblock %}
-{% block javascript %}
-<script src="{{ url_for('static', filename='javascript/main.js') }} "></script>
 {% endblock %}

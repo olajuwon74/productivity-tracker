@@ -1,5 +1,5 @@
-{% extends "html/base.html" %}
-{% from "html/macro.html" import filter_by_date %}
+{% extends "base.html" %}
+{% from "macro.html" import filter_by_date %}
 {% block main %}
         <div class="grid-container">
             
@@ -22,7 +22,7 @@
                       <td>{{ day }}</td>
                       <td> <span id="target-green"></span>{{ record.get("status") }}</td>
                       <td style="white-space: pre-line">{{ record.get("sequence") }}</td>
-                      <td><a id="yellow" href="#log">View logs</a></td>
+                      <td><a id="yellow" href="{{ url_for('view') }}?startDate={{day}}&endDate={{day}}">View logs</a></td>
                     </tr>
                   {% endfor %}
                   
