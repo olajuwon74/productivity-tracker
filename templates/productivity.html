@@ -1,35 +1,75 @@
-{% extends "base.html" %}
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/productivity.css')}}">
-{% endblock %}
-{% block main %}  
-          <!-- Page content -->
-          <div class="content">
+{% extends "base.html" %} {% block styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/productivity.css')}}"
+/>
+{% endblock %} {% block main %}
+<!-- Page content -->
+<div class="content">
+  <div class="grid-container">
+    <div class="top-left">
+      <h3>Productivity Graph</h3>
+      <img
+        src="{{ url_for('static', filename='images/Chart.png')}}"
+        alt="graph"
+        height="150"
+      />
+    </div>
 
-             <div class="grid-container">
+    <div class="top-right">
+      <h3>Sequence Chart</h3>
+      <canvas id="sequence_doughnut_chart"></canvas>
+    </div>
+  </div>
 
-                <div class="top-left">
-                    <H3>Productivity Graph</H3>
-                    <img src="{{ url_for('static', filename='images/Chart.png')}}" alt="graph" height="150">
-                </div>
+  <div class="grid-container-2">
+    <div class="bottom">
+      <h3>Productivity Chart</h3>
+      <img
+        src="{{ url_for('static', filename='images/Line chart.png') }}"
+        alt="Chart"
+        width="900"
+        height="200"
+      />
+    </div>
+  </div>
+</div>
 
-                <div class="top-right">
-                    <H3>Sequence Chart</H3>
-                    <img class="img-chart" src="{{ url_for('static', filename='images/Group.png') }}" alt="group">
-                </div>
-            </div>
-           
-            <div class="grid-container-2 ">
-
-                <div class="bottom">
-                    <H3>Productivity Chart</H3>
-                    <img src="{{ url_for('static', filename='images/Line chart.png') }}"  alt="Chart" width="900" height="200">
-                </div>
-                
-            </div>
-            
-            
-
-          </div>
+{% endblock %} {% block javascript %}
+<script src="{{ url_for('static', filename='javascript/chart.min.js') }}"></script>
+<script>
+  const data = {{ top_sequences_with_percentage|safe }};
+  const myChart = new Chart(sequence_doughnut_chart, {
+      type: 'doughnut',
+      data: {
+        labels: data.map(d => d.id),
+          datasets: [{
+            data: data,
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(153, 102, 255)',
+            ],
+          }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    
+                },
+            },
+            maintainAspectRatio: false,
+            parsing: {
+                yAxisKey: 'value'
+            },
+      },
+  });
+    myChart.canvas.parentNode.style.height = '300px';
+    myChart.canvas.parentNode.style.width = '700px';
+ 
+</script>
 
 {% endblock %}
