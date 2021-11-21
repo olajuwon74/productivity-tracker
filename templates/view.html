@@ -12,9 +12,9 @@
         <tr>
           {% for col_name in header %}
             {% if loop.index in [1,2] %}
-              <th class="col-md-3">{{ col_name }}</th>
+              <th class="col-md-3">{{ col_name.title().replace("_"," ") }}</th>
             {% else %}
-              <th class="col-md-1">{{ col_name }}</th>
+              <th class="col-md-1">{{ col_name.title().replace("_"," ") }}</th>
             {% endif %}
           {% endfor %}
         </tr>

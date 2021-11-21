@@ -17,7 +17,7 @@
     </div>
 
     <div class="top-right">
-      <h3>Sequence Chart</h3>
+      <h3>Top Sequences Chart</h3>
       <canvas id="sequence_doughnut_chart"></canvas>
     </div>
   </div>
@@ -39,7 +39,7 @@
 <script src="{{ url_for('static', filename='javascript/chart.min.js') }}"></script>
 <script>
   const data = {{ top_sequences_with_percentage|safe }};
-  const myChart = new Chart(sequence_doughnut_chart, {
+  const sequenceChart = new Chart(sequence_doughnut_chart, {
       type: 'doughnut',
       data: {
         labels: data.map(d => d.id),
@@ -55,6 +55,9 @@
           }]
         },
         options: {
+            animation: {
+                duration: 2000
+            }, 
             plugins: {
                 legend: {
                     position: 'right',
@@ -67,8 +70,8 @@
             },
       },
   });
-    myChart.canvas.parentNode.style.height = '300px';
-    myChart.canvas.parentNode.style.width = '700px';
+    sequenceChart.canvas.parentNode.style.height = '300px';
+    sequenceChart.canvas.parentNode.style.width = '700px';
  
 </script>
 
