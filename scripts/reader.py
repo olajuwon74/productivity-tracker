@@ -31,7 +31,16 @@ def get_next_record() -> dict:
     Returns the next record in the csv file.
     """
     next_record = next(csv_reader, None)
-    return {col: next_record.get(col) for col in get_header()} if next_record else {}
+    if not next_record:
+        return {}
+
+    formatted_record = {}
+    for col in get_header():
+        if col in ['class_weight', 'weight_ema_4']:
+            formatted_record[col] = round(float(next_record.get(col, 0)), 1)
+        else:
+            formatted_record[col] = next_record.get(col)
+    return formatted_record
 
 def get_current_record() -> dict:
     """

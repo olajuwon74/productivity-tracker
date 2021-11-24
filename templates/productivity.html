@@ -24,42 +24,44 @@
 {% endblock %} {% block javascript %}
 <script src="{{ url_for('static', filename='javascript/chart.min.js') }}"></script>
 <script>
-  const data = {{ top_sequences_with_percentage|safe }};
-  const sequenceChart = new Chart(sequence_doughnut_chart, {
-      type: 'doughnut',
-      data: {
-        labels: data.map(d => d.id),
-          datasets: [{
-            data: data,
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(153, 102, 255)',
-            ],
-          }]
+  function constructSequenceChart(){
+    const data = {{ top_sequences_with_percentage|safe }};
+    const sequenceChart = new Chart(sequence_doughnut_chart, {
+        type: 'doughnut',
+        data: {
+          labels: data.map(d => d.id),
+            datasets: [{
+              data: data,
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+              ],
+            }]
+          },
+          options: {
+              animation: {
+                  duration: 2000
+              },
+              plugins: {
+                  legend: {
+                      position: 'right',
+                      maxWidth: 0,
+                  },
+              },
+              maintainAspectRatio: false,
+              parsing: {
+                  yAxisKey: 'value'
+              },
         },
-        options: {
-            animation: {
-                duration: 2000
-            },
-            plugins: {
-                legend: {
-                    position: 'right',
-                    maxWidth: 0,
-                },
-            },
-            maintainAspectRatio: false,
-            parsing: {
-                yAxisKey: 'value'
-            },
-      },
-  });
-    sequenceChart.canvas.parentNode.style.height = '300px';
-    sequenceChart.canvas.parentNode.style.width = '1000px';
+    });
+      sequenceChart.canvas.parentNode.style.height = '300px';
+      sequenceChart.canvas.parentNode.style.width = '1000px';
+  }
 
-
+  function constructDayChart(){
     const day_productivity_data = {{ lines_history|safe }};
     const chartColors = { 	red: 'rgb(255, 99, 132)', 	orange: 'rgb(255, 159, 64)', 	yellow: 'rgb(255, 205, 86)', 	green: 'rgb(75, 192, 192)', 	blue: 'rgb(54, 162, 235)', 	purple: 'rgb(153, 102, 255)', 	grey: 'rgb(201, 203, 207)', white: 'rgb(255, 255, 255)', black: 'rgb(0, 0, 0)' };
     const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
@@ -67,8 +69,9 @@
     const day_productivity_chart = new Chart(day_chart, {
         type: 'line',
         data: {
-            labels: day_productivity_data.map(d => d.total_seconds),
-            datasets: [{
+          labels: day_productivity_data.map(d => d.total_seconds),
+          datasets: [{
+                raw_data: day_productivity_data,
                 data: day_productivity_data.map(d => d.class_weight),
                 borderColor: chartColors.orange,
                 fill: false,
@@ -76,43 +79,66 @@
                   borderColor: ctx => up(ctx, chartColors.green) || down(ctx, chartColors.red),
                 },
                 spanGaps: true,
+            }]
             },
-            ]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                title: {
-                  display: true,
-                  text: 'Productivity'
-                },
-                legend: {
-                  display: false,
-                },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          elements: {
+            point: {
+              pointStyle: 'star',
+            }
+          },
+          plugins: {
+              title: {
+                display: true,
+                text: 'Productivity'
               },
-              interaction: {
-                intersect: false,
+              legend: {
+                display: false,
               },
-              scales: {
-                x: {
-                  display: true,
-                  title: {
-                    display: true,
-                    text: 'timeline'
-                  }
-                },
-                y: {
-                  display: true,
-                  title: {
-                    display: true,
-                    text: 'class weight'
-                  },
+              tooltip: {
+                callbacks: {
+                    usePointStyle: true,
+                    title: function(context,) {
+                      const {start_timestamp} = context[0].dataset.raw_data[context[0].dataIndex]
+                      return start_timestamp;
+                    },
+                    label: function(context) {
+                        const {class_weight, sequence} = context.dataset.raw_data[context.dataIndex]
+                        return [class_weight, sequence];
+                    },
                 }
+            },
+          },
+          interaction: {
+            intersect: false,
+          },
+          scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'timeline'
               }
             },
+            y: {
+              display: true,
+              title: {
+                display: true,
+                text: 'class weight'
+              },
+            }
+          }
         },
-    );
+    },
+    )
+  };
+
+  $(document).ready(function(){
+    constructSequenceChart();
+    constructDayChart();
+  });
 </script>
 
 {% endblock %}

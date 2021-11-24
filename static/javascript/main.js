@@ -55,6 +55,8 @@ function getLatestProductivity(){
   })
 }
 
-getLatestProductivity();
-//  add click event listener to filter_by_date id
-document.getElementById("filter_by_date").addEventListener("click", filterByDate);
+$(document).ready(function(){
+  getLatestProductivity();
+  //  add click event listener to filter_by_date id
+  document.getElementById("filter_by_date")?.addEventListener("click", filterByDate);
+});
