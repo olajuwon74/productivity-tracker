@@ -45,7 +45,6 @@ def history():
 
     daily_history = logics.get_summarized_daily_history(
         start_date=start_date, end_date=end_date, number_of_records=2)
-    print(daily_history)
     return render_template('history.html', daily_history=daily_history)
 
 

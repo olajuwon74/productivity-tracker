@@ -1,20 +1,20 @@
-.btn{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: pink;
-    font-size: 20px;
-    color: white;
-    padding: 10px 30px;
-    cursor: pointer;
-  }
+.btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: pink;
+  font-size: 20px;
+  color: white;
+  padding: 10px 30px;
+  cursor: pointer;
+}
 
-#box{
+#box {
   width: 480px;
   height: 296px;
   overflow: hidden;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 0 10px black;
   border-radius: 10px;
   position: absolute;
@@ -27,28 +27,28 @@
   display: none;
 }
 
-#box span{
+#box span {
   color: hotpink;
   font-size: 40px;
   display: block;
   margin: 20px 0;
 }
 
-#box h1{
-  color: brown
+#box h1 {
+  color: brown;
 }
 
-.signal{
+.signal {
   width: 440px;
   height: 37px;
   font-size: 18px;
   color: white;
   padding: 10px 20px;
   cursor: pointer;
-  background: #DC4747;
+  background: #dc4747;
   display: inline-block;
   border-radius: 10px;
 }
-p{
+p {
   font-size: 22px;
 }
