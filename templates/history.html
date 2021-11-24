@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% from "macro.html" import filter_by_date %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+{% endblock %}
+
 {% block main %}
         <div class="grid-container">
             
@@ -20,7 +24,7 @@
                   {% for day, record in daily_history.items() %}
                     <tr>
                       <td>{{ day }}</td>
-                      <td> <span id="target-green"></span>{{ record.get("status") }}</td>
+                      <td> <span class="productivity_status" style="display: none">{{ record.get("status") }}</span></td>
                       <td style="white-space: pre-line">{{ record.get("sequence") }}</td>
                       <td><a id="yellow" href="{{ url_for('view') }}?startDate={{day}}&endDate={{day}}">View logs</a></td>
                     </tr>
@@ -32,4 +36,21 @@
 
           </div>
         </div>
+{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function(){
+  const status_color_map = {'N': 'orange', 'G': 'green', 'P': 'red'}
+  for (var i = 0; i < $(".productivity_status").length; i++) {
+    var element = $(".productivity_status")[i]
+    var status = element.innerHTML;
+    
+    status_color = status_color_map[status];
+    element.innerHTML = ""
+    element.style.backgroundColor = status_color;
+    element.style.display = "inline-block";
+
+}
+});
+</script>
 {% endblock %}

@@ -10,11 +10,13 @@
   <table class="table table-hover">
       <thead>
         <tr>
-          {% for col_name in header %}
-            {% if loop.index in [1,2] %}
-              <th class="col-md-3">{{ col_name.title().replace("_"," ") }}</th>
-            {% else %}
-              <th class="col-md-1">{{ col_name.title().replace("_"," ") }}</th>
+          {% for col_name in header%}
+            {% if col_name != 'total_seconds' %}
+              {% if loop.index in [1,2] %}
+                <th class="col-md-2">{{ col_name.title().replace("_"," ") }}</th>
+              {% else %}
+                <th class="col-md-1">{{ col_name.title().replace("_"," ") }}</th>
+              {% endif %}
             {% endif %}
           {% endfor %}
         </tr>
@@ -24,15 +26,19 @@
         {% for record in history %}
           <tr>
             {% for col_name in header %}
+              {% if col_name != 'total_seconds' %}
               <td>{{ record.get(col_name) }}</td>
+              {% endif %}
+              {% endfor %}
+            </tr>
             {% endfor %}
-          </tr>
-        {% endfor %}
 
         <tr>
           {% if next_line %}
             {% for col_name in header %}
-              <td>{{ next_line.get(col_name) }}</td>
+              {% if col_name != 'total_seconds' %}
+                <td>{{ next_line.get(col_name) }}</td>
+              {% endif %}
             {% endfor %}
           {% endif %}
         </tr>

@@ -72,41 +72,20 @@ nav{
     float: none;
   }
 }
-#target{
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 0 0 10px;
-    background-color:#77B255;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 10px;
-    width: 10px;
-}
 
-#target-green{
+.productivity_status{
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 0 10px;
   background-color:#77B255;
-  border-color: white;
-  border-radius: 50%;
-  border-width: 5px;
-  height: 10px;
-  width: 10px;
-}
-#target-red{
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 0 10px;
   background-color:#DD2E44;
-  ;
   border-color: white;
   border-radius: 50%;
   border-width: 5px;
   height: 10px;
   width: 10px;
 }
+
 .content{
     margin-top: 22px;
 }
