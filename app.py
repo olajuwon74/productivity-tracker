@@ -65,9 +65,8 @@ def productivity():
 
     # for productivity line chart
     lines_history = logics.get_history(for_productivity_charts=True)
-    pprint(lines_history)
 
-    return render_template('productivity.html', top_sequences_with_percentage=json.dumps(top_sequences_with_percentage))
+    return render_template('productivity.html', top_sequences_with_percentage=json.dumps(top_sequences_with_percentage), lines_history=json.dumps(lines_history))
 
 
 @app.route("/")

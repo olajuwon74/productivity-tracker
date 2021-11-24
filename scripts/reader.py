@@ -1,12 +1,12 @@
 import csv
 
-csv_file = open('records/simulated_log.csv', 'r')
+csv_file = open('records/simulated_log_updated.csv', 'r')
 csv_reader = csv.DictReader(csv_file)
 
 #  local state variables
 header = ["start_timestamp", "sequence", "cat",
-          "weight_ema_4", "class_weight",	"seconds", "anomaly"]
-# header = [col_name.title().replace("_", " ") for col_name in header]
+          "weight_ema_4", "class_weight", "seconds", "total_seconds"]
+
 history = []
 
 
@@ -26,7 +26,7 @@ def read_history():
     return history
 
 
-def get_next_record():
+def get_next_record() -> dict:
     """
     Returns the next record in the csv file.
     """

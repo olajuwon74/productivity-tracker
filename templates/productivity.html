@@ -7,15 +7,6 @@
 <!-- Page content -->
 <div class="content">
   <div class="grid-container">
-    <div class="top-left">
-      <h3>Productivity Graph</h3>
-      <img
-        src="{{ url_for('static', filename='images/Chart.png')}}"
-        alt="graph"
-        height="150"
-      />
-    </div>
-
     <div class="top-right">
       <h3>Top Sequences Chart</h3>
       <canvas id="sequence_doughnut_chart"></canvas>
@@ -25,12 +16,7 @@
   <div class="grid-container-2">
     <div class="bottom">
       <h3>Productivity Chart</h3>
-      <img
-        src="{{ url_for('static', filename='images/Line chart.png') }}"
-        alt="Chart"
-        width="900"
-        height="200"
-      />
+      <canvas id="day_chart"></canvas>
     </div>
   </div>
 </div>
@@ -57,11 +43,11 @@
         options: {
             animation: {
                 duration: 2000
-            }, 
+            },
             plugins: {
                 legend: {
                     position: 'right',
-                    
+                    maxWidth: 0,
                 },
             },
             maintainAspectRatio: false,
@@ -71,8 +57,62 @@
       },
   });
     sequenceChart.canvas.parentNode.style.height = '300px';
-    sequenceChart.canvas.parentNode.style.width = '700px';
- 
+    sequenceChart.canvas.parentNode.style.width = '1000px';
+
+
+    const day_productivity_data = {{ lines_history|safe }};
+    const chartColors = { 	red: 'rgb(255, 99, 132)', 	orange: 'rgb(255, 159, 64)', 	yellow: 'rgb(255, 205, 86)', 	green: 'rgb(75, 192, 192)', 	blue: 'rgb(54, 162, 235)', 	purple: 'rgb(153, 102, 255)', 	grey: 'rgb(201, 203, 207)', white: 'rgb(255, 255, 255)', black: 'rgb(0, 0, 0)' };
+    const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
+    const up = (ctx, value) => ctx.p0.parsed.y < ctx.p1.parsed.y ? value : undefined;
+    const day_productivity_chart = new Chart(day_chart, {
+        type: 'line',
+        data: {
+            labels: day_productivity_data.map(d => d.total_seconds),
+            datasets: [{
+                data: day_productivity_data.map(d => d.class_weight),
+                borderColor: chartColors.orange,
+                fill: false,
+                segment: {
+                  borderColor: ctx => up(ctx, chartColors.green) || down(ctx, chartColors.red),
+                },
+                spanGaps: true,
+            },
+            ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Productivity'
+                },
+                legend: {
+                  display: false,
+                },
+              },
+              interaction: {
+                intersect: false,
+              },
+              scales: {
+                x: {
+                  display: true,
+                  title: {
+                    display: true,
+                    text: 'timeline'
+                  }
+                },
+                y: {
+                  display: true,
+                  title: {
+                    display: true,
+                    text: 'class weight'
+                  },
+                }
+              }
+            },
+        },
+    );
 </script>
 
 {% endblock %}
