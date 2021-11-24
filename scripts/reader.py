@@ -33,6 +33,12 @@ def get_next_record() -> dict:
     next_record = next(csv_reader, None)
     return {col: next_record.get(col) for col in get_header()} if next_record else {}
 
+def get_current_record() -> dict:
+    """
+    Returns the current record in the csv file.
+    """
+    current_record = read_history()[-1] if read_history() else {}
+    return current_record
 
 def get_header() -> list:
     """

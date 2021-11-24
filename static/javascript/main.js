@@ -43,5 +43,18 @@ function filterByDate(date) {
   
 }
 
+function getLatestProductivity(){
+  productivity = $.get('/current_record', function(data, status){
+    if (status === 'success'){
+      if (data){
+        status_color_map = {'N': 'orange', 'G': 'green', 'P': 'red'}
+        status_color = status_color_map[data.cat];
+        document.getElementById("productivity_status").style.backgroundColor = status_color;
+      }
+    }
+  })
+}
+
+getLatestProductivity();
 //  add click event listener to filter_by_date id
 document.getElementById("filter_by_date").addEventListener("click", filterByDate);

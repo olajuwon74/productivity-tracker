@@ -45,6 +45,7 @@ def history():
 
     daily_history = logics.get_summarized_daily_history(
         start_date=start_date, end_date=end_date, number_of_records=2)
+    print(daily_history)
     return render_template('history.html', daily_history=daily_history)
 
 
@@ -68,6 +69,14 @@ def productivity():
 
     return render_template('productivity.html', top_sequences_with_percentage=json.dumps(top_sequences_with_percentage), lines_history=json.dumps(lines_history))
 
+
+@app.route('/current_record')
+def get_latest_productivity():
+    """
+    Gets the latest productivity status/cat
+    """
+    latest_productivity = logics.get_current_line()
+    return jsonify(latest_productivity)
 
 @app.route("/")
 def home():

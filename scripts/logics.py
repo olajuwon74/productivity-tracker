@@ -15,6 +15,13 @@ def get_next_line() -> dict:
         return next_line
     return {}
 
+def get_current_line() -> dict:
+    """
+    Returns the previous line from the csv file.
+    """
+    current_line = reader.get_current_record()
+    return current_line
+
 
 @inject_productivity_chart_start_and_end_dates
 def get_history(start_date=None, end_date=None, for_productivity_charts=False) -> list:
@@ -87,7 +94,7 @@ def get_summarized_daily_history(start_date=None, end_date=None, for_productivit
                                  for count_pair in Counter(sequences).most_common(number_of_records)]
 
         # since scoring is realtime, we need to take the last record of the day
-        status = records[-1].get("Cat")
+        status = records[-1].get("cat")
 
         if for_productivity_charts:
             summarized_history[day] = {
