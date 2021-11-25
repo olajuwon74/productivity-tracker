@@ -1,0 +1,23 @@
+{% macro build_popup(popup_type, popup_title, text_context, image_context=None) %}
+<!-- Modal -->
+<div class="modal fade" id="{{ popup_type }}" tabindex="-1" role="dialog" aria-labelledby="{{ popup_type }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="{{ popup_type }}title">{{ popup_title }}</h5>
+          
+        </div>
+        <div class="modal-body">
+          {% if image_context %}
+            <img src="{{ url_for('static', filename='images/'+image_context) }}">
+          {% endif %}
+          {{ text_context|safe }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endmacro %}

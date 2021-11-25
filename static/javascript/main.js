@@ -1,32 +1,3 @@
-// // When the user scrolls the page, execute myFunction
-// window.onscroll = function() {myFunction()};
-
-// // Get the navbar
-// var navbar = document.getElementById("navbar");
-
-// // Get the offset position of the navbar
-// var sticky = navbar.offsetTop;
-
-// // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navbar.classList.add("sticky")
-//   } else {
-//     navbar.classList.remove("sticky");
-//   }
-// }
-
-var modal = null
- function pop() {
-   if(modal === null) {
-     document.getElementById("box").style.display = "block";
-     modal = true
-   } else {
-     document.getElementById("box").style.display = "none";
-     modal = null
-   }
- }
-
 function filterByDate(date) {
   var startDate = document.getElementById("trip_start").value;
   var endDate = document.getElementById("trip_end").value;
@@ -55,8 +26,30 @@ function getLatestProductivity(){
   })
 }
 
+function showmodal(){
+  // if current address is not '/logs', don't show modal
+  if (window.location.pathname !== '/logs' || window.location.search){
+    return;
+  }
+  const modalsId = {'P': ['bad1', 'bad2'], 'G': ['good1', 'good2'], 'N': ['neutral1', 'neutral2']}
+  const color_status_map = {'orange': 'N', 'green': 'G', 'red': 'P'}
+  const current_color = document.getElementById("productivity_status").style.backgroundColor;
+  if (!current_color){
+    return;
+  }
+  const current_status = color_status_map[current_color];
+  const current_modals = modalsId[current_status];
+  const modal = current_modals[Math.floor(Math.random() * current_modals.length)];
+  const modal_element_title = document.getElementById(modal+'title');
+  modal_element_title.style.backgroundColor = current_color;
+  $(`#${modal}`).modal('show');
+}
+
 $(document).ready(function(){
   getLatestProductivity();
   //  add click event listener to filter_by_date id
   document.getElementById("filter_by_date")?.addEventListener("click", filterByDate);
+  setTimeout(() => {
+    showmodal();
+  }, 1000);
 });

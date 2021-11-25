@@ -111,3 +111,18 @@ thead {
   top: 60px;
   background-color: #fff;
 }
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-title {
+  width: 100%;
+  font-size: 18px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+}
