@@ -30,7 +30,7 @@
             {% endblock %}
         </main>
         <div class="popups">
-            {{ build_popup('bad1', 'Warning', """<h5>Your current productivity is  0.1</h5>
+            {{ build_popup('bad1', 'Warning', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <p>Your current work pattern is: Social, Shopping.</p>
             <h6>Tips:</h6>
             <p>Switch your work pattern to Email, Professional Networking, Certification to improve your productivity</p>
@@ -40,27 +40,27 @@
             """, "bad2.png") }}
             
             {{ build_popup('neutral1', 'Current Productivity',  """<h6>Tip:</h6>
-            <p>Your current productivity score is 0.65.
-                To improve your productivity do more of  Email, Professional Networking, Certification </p>
+            <p>Your current productivity score is <span class='productivity_value'></span>.</p>
+            <p>To improve your productivity do more of  Email, Professional Networking, Certification </p>
             """, "neutral1.png"
              ) }}
 
             {{ build_popup('neutral2', 'Current Productivity', """<h6>Tip:</h6>
-            <p>Your current productivity score is 0.65.
-                To improve your productivity do more of  Email, Professional Networking, Certification </p>
+            <p>Your current productivity score is <span class='productivity_value'></span>.</p>
+            <p>To improve your productivity do more of  Email, Professional Networking, Certification </p>
             """, "neutral2.png") }}
 
-            {{ build_popup('good1', 'Great!!!', """<h5>Your current productivity is  0.7</h5>
+            {{ build_popup('good1', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <br>
             <p>Hello!!!
-                Your producticity score for the last four hours is  0.7. This is impressive.Your are still 
-                within the normal productivity threshold.  KEEP IT UP</p>
+                Your producticity score is  <span class='productivity_value'></span>.
+                This is impressive.Your are still within the normal productivity threshold.  KEEP IT UP</p>
             """, "good1.png") }}
 
-            {{ build_popup('good2', 'Great!!!', """<h5>Your current productivity is  0.7</h5>
+            {{ build_popup('good2', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <br>
             <p>Hello!!!
-                Your producticity score is  0.7. This is impressive.Your are still 
+                Your producticity score is  <span class='productivity_value'></span>. This is impressive.Your are still 
                 within the normal productivity threshold.  KEEP IT UP!</p>
             """, "good2.png") }}
         </div>

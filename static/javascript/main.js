@@ -21,6 +21,12 @@ function getLatestProductivity(){
         status_color_map = {'N': 'orange', 'G': 'green', 'P': 'red'}
         status_color = status_color_map[data.cat];
         document.getElementById("productivity_status").style.backgroundColor = status_color;
+
+        // update productivity_values in modal
+        var popups = document.getElementsByClassName("productivity_value");
+        for (var i = 0; i < popups.length; i++) {
+          popups[i].innerHTML = data.class_weight;
+        }
       }
     }
   })

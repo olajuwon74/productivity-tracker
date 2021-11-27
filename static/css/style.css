@@ -126,3 +126,7 @@ thead {
   border-radius: 10px;
   text-align: center;
 }
+
+.productivity_value {
+  font-weight: bold;
+}
