@@ -1,3 +1,10 @@
+const status_color_map = {'N': '#FFC234', 'G': '#1B7930', 'P': '#FC2D2D'};
+function rgbToHex(color){
+  const rgba = color.replace(/^rgba?\(|\s+|\)$/g, '').split(',');
+  const hex = `#${((1 << 24) + (parseInt(rgba[0]) << 16) + (parseInt(rgba[1]) << 8) + parseInt(rgba[2])).toString(16).slice(1)}`;
+  
+  return hex.toUpperCase();
+}
 function filterByDate(date) {
   var startDate = document.getElementById("trip_start").value;
   var endDate = document.getElementById("trip_end").value;
@@ -18,7 +25,6 @@ function getLatestProductivity(){
   productivity = $.get('/current_record', function(data, status){
     if (status === 'success'){
       if (data){
-        status_color_map = {'N': 'orange', 'G': 'green', 'P': 'red'}
         status_color = status_color_map[data.cat];
         document.getElementById("productivity_status").style.backgroundColor = status_color;
 
@@ -38,8 +44,10 @@ function showmodal(){
     return;
   }
   const modalsId = {'P': ['bad1', 'bad2'], 'G': ['good1', 'good2'], 'N': ['neutral1', 'neutral2']}
-  const color_status_map = {'orange': 'N', 'green': 'G', 'red': 'P'}
-  const current_color = document.getElementById("productivity_status").style.backgroundColor;
+  const color_status_map =  Object.fromEntries(Object.entries(status_color_map).map(a => a.reverse()))
+  const current_color = rgbToHex(document.getElementById("productivity_status").style.backgroundColor);
+  console.log(color_status_map);
+  console.log(current_color);
   if (!current_color){
     return;
   }
