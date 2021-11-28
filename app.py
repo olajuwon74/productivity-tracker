@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from scripts import logics
 import json
-from pprint import pprint
 
 TEMPLATE_DIR = 'templates'
 STATIC_DIR = 'static'
@@ -65,8 +64,35 @@ def productivity():
 
     # for productivity line chart
     lines_history = logics.get_history(for_productivity_charts=True)
+    
+    last_two_days = logics.get_last_two_days_history()
+    yesterday_class_weight = last_two_days["yesterday"].get("class_weight") or 0
+    today_class_weight = last_two_days["today"].get("class_weight") or 0
+    daily_change = today_class_weight - yesterday_class_weight
+    if daily_change > 0:
+        daily_change_class = 'G'
+    elif daily_change < 0:
+        daily_change_class = 'P'
+    else:
+        daily_change_class = 'N'
+    
+    yesterday_class_weight = yesterday_class_weight or '-'
+    today_class_weight = today_class_weight or '-'
 
-    return render_template('productivity.html', top_sequences_with_percentage=json.dumps(top_sequences_with_percentage), lines_history=json.dumps(lines_history))
+
+    message = {
+        "P": "Productivity went down!!!",
+        "G": "Productivity went up!!!",
+        "N": "Maintaining Productivity"
+    }
+    return render_template('productivity.html',
+                top_sequences_with_percentage=json.dumps(top_sequences_with_percentage),
+                lines_history=json.dumps(lines_history),
+                yesterday_class_weight=yesterday_class_weight,
+                today_class_weight=today_class_weight,
+                daily_change_class=daily_change_class,
+                daily_change_message=message[daily_change_class],
+                )
 
 
 @app.route('/current_record')

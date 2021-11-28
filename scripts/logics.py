@@ -76,6 +76,31 @@ def get_daily_history(start_date=None, end_date=None) -> dict:
 
     return daily_history
 
+def get_last_two_days_history() -> dict:
+    """
+    Returns the history of the csv file from the last two days.
+    """
+    history = get_daily_history()
+    last_two_days_history = {}
+    
+    found_records = 0
+    day_map = {
+        0: "today",
+        1: "yesterday",
+    }
+
+    for day in list(history.values())[::-1]:
+        if found_records == 2:
+            break
+        last_two_days_history[day_map[found_records]] = day[-1]
+        found_records += 1
+    
+    for value in day_map.values():
+        if value not in last_two_days_history:
+            last_two_days_history[value] = {}
+    
+    return last_two_days_history
+
 
 @inject_productivity_chart_start_and_end_dates
 def get_summarized_daily_history(start_date=None, end_date=None, for_productivity_charts=False, number_of_records=2) -> dict:
@@ -95,15 +120,18 @@ def get_summarized_daily_history(start_date=None, end_date=None, for_productivit
 
         # since scoring is realtime, we need to take the last record of the day
         status = records[-1].get("cat")
+        class_weight = records[-1].get("class_weight")
 
         if for_productivity_charts:
             summarized_history[day] = {
                 "status": status,
+                "class_weight": class_weight,
                 "sequences": most_common_sequences
             }
         else:
             summarized_history[day] = {
                 "status": status,
+                "class_weight": class_weight,
                 "sequence": "\n".join([sequence['sequence'] for sequence in most_common_sequences])
             }
     return summarized_history
