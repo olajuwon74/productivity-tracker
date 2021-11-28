@@ -1,57 +1,56 @@
-body{
-    background: #E1E4ED;
+body {
+  background: #e1e4ed;
 }
-#yellow{
-    color: #03506F;
+#yellow {
+  color: #03506f;
 }
 
-
-.navbar{
-    color: #E1E4ED;
-    padding-left: 43px;
-    padding-right: 43px;
+.navbar {
+  color: #e1e4ed;
+  padding-left: 43px;
+  padding-right: 43px;
 }
-.d-inline-block{
-    border-radius: 50%;
+.d-inline-block {
+  border-radius: 50%;
 }
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 306px;
-    background-color: #0A043C;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    padding-top: 65px;
-  }
-  
-  /* Sidebar links */
-  .sidebar a {
-    display: block;
-    color: white;
-    padding: 16px;
-    padding-left: 43px;
-    text-decoration: none;
-  }
-  
-  /* Active/current link */
-  .sidebar a.active {
-    background-color: #03506F;
-    color: white;
-  }
-  
-  /* Links on mouse-over */
-  .sidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-  
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-  div.content {
-    margin-left: 300px;
-    padding: 1px 16px;
-    height: 1000px;
-  }
+  margin: 0;
+  padding: 0;
+  width: 306px;
+  background-color: #0a043c;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  padding-top: 65px;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  padding-left: 43px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #03506f;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 300px;
+  padding: 1px 16px;
+  height: 1000px;
+}
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
@@ -60,8 +59,12 @@ body{
     height: auto;
     position: relative;
   }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
 }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
@@ -72,11 +75,11 @@ body{
   }
 }
 
-#target{
+#target {
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 0 10px;
-  background-color:#77B255;
+  background-color: #77b255;
   border-color: white;
   border-radius: 50%;
   border-width: 5px;
@@ -84,93 +87,115 @@ body{
   width: 10px;
 }
 
-#target-green{
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 0 0 10px;
-    background-color:#77B255;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 10px;
-    width: 10px;
+#target-green {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  background-color: #77b255;
+  border-color: white;
+  border-radius: 50%;
+  border-width: 5px;
+  height: 10px;
+  width: 10px;
 }
-#target-red{
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 0 0 10px;
-    background-color:#DD2E44;
-    ;
-    border-color: white;
-    border-radius: 50%;
-    border-width: 5px;
-    height: 10px;
-    width: 10px;
+#target-red {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+  background-color: #dd2e44;
+  border-color: white;
+  border-radius: 50%;
+  border-width: 5px;
+  height: 10px;
+  width: 10px;
 }
-.content{
-    margin-top: 22px;
+.content {
+  margin-top: 22px;
 }
-#parent { white-space: nowrap; }
-.child { display: inline-block; }
+#parent {
+  white-space: nowrap;
+}
+.child {
+  display: inline-block;
+}
 
-.child{
- margin-right: 20%;
+.child {
+  margin-right: 20%;
 }
-button{
-    width:100px;
-    height: 36px;
-    background-color: #FFAC33;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    color: white;
+button {
+  width: 100px;
+  height: 36px;
+  background-color: #ffac33;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  padding: 15px;
 }
-.top-left{
-    width: 35%px;
-    height: 200px;
-    background-color: #ffffff;
-    padding: 5px;
-    box-shadow: 0 0 10px #E1E4ED;
-    border-radius: 10px;
+.top-right {
+  height: 200px;
+  background-color: #ffffff;
+  padding: 5px;
+  box-shadow: 0 0 10px #e1e4ed;
+  border-radius: 10px;
+  /* font-size: 80px; */
+  /* text-align: center; */
+
 }
-.top-right{
-    width: 35%px;
-    height: 200px;
-    background-color: #ffffff;
-    padding: 5px;
-    box-shadow: 0 0 10px #E1E4ED;
-    border-radius: 10px;
+.top-left {
+  height: 200px;
+  background-color: #ffffff;
+  padding: 5px;
+  box-shadow: 0 0 10px #e1e4ed;
+  border-radius: 10px;
+}
+
+.top-right .icon {
+  font-size: 80px;
+  text-align: center;
+
+}
+
+.top-right p {
+  margin: 0;
+}
+
+.P {
+  color: #fc2d2d;
+}
+.N {
+  color: #ffc234;
+}
+.G {
+  color: #1b7930;
 }
 .grid-container-2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-    padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding: 15px;
 }
-.bottom{
-    width: 100%;
-    background-color: #ffffff;
-    height: 300px;
-    padding: 15px;
-    box-shadow: 0 0 10px #E1E4ED;
-    border-radius: 10px;
-    
-
+.bottom {
+  width: 100%;
+  background-color: #ffffff;
+  height: 300px;
+  padding: 15px;
+  box-shadow: 0 0 10px #e1e4ed;
+  border-radius: 10px;
 }
 /* .sticky {
     position: fixed;
     top: 0;
     width: 100%;
   } */
-  .img-chart{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 42%;
-  }
+.img-chart {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 42%;
+}

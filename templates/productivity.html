@@ -7,9 +7,24 @@
 <!-- Page content -->
 <div class="content">
   <div class="grid-container">
-    <div class="top-right">
+    <div class="top-left">
       <h3>Top Sequences Chart</h3>
       <canvas id="sequence_doughnut_chart"></canvas>
+    </div>
+    
+    <div class="top-right">
+      <h3>Daily Productivity</h3>
+      {% if daily_change_class == 'P' %}
+        <div class="icon P"><span class="fa fa-arrow-trend-down"></span></div>
+      {% elif daily_change_class == 'G' %}
+        <div class="icon G"><span class="fa fa-arrow-trend-up"></span></div>
+      {% else %}
+        <div class="icon N"><span class="fa fa-grip-lines"></span></div>
+      {% endif %}
+
+      <p>Yesterday: {{ yesterday_class_weight }}</p>
+      <p>Today: {{ today_class_weight }} </p>
+      <p>Trend Summary: {{ daily_change_message}} </p>
     </div>
   </div>
 
@@ -57,8 +72,8 @@
               },
         },
     });
-      sequenceChart.canvas.parentNode.style.height = '300px';
-      sequenceChart.canvas.parentNode.style.width = '1000px';
+      sequenceChart.canvas.parentNode.style.height = '250px';
+      sequenceChart.canvas.parentNode.style.width = '700px';
   }
 
   function constructDayChart(){
