@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title> PROJECT NAME </title>
+        <title> PBC </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=manrope">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -15,7 +15,7 @@
     <body>
         <nav class="navbar navbar-light bg-light sticky-top">
             <a class="navbar-brand" href="#">
-            PROJECT<span id="yellow">NAME</span>
+            <span style="font-size: xx-large;">PBC</span>
             </a>
         </nav>
 
@@ -38,18 +38,21 @@
 
             {{ build_popup('bad2', 'Warning', """<h6>Switch your work patterns to email, Professional Networking, file sharing.</h6>
             """, "bad2.png") }}
+
+            {{ build_popup('bad3', 'Warning', """<h4>Hello!! Your productivity is going down.<br> <br> Switch your work patterns to email, Professional Networking, file sharing!</h4>
+            """) }}
             
-            {{ build_popup('neutral1', 'Current Productivity',  """<h6>Tip:</h6>
-            <p>Your current productivity score is <span class='productivity_value'></span>.</p>
-            <p>To improve your productivity do more of  Email, Professional Networking, Certification </p>
+            {{ build_popup('neutral1', 'Current Productivity',  """<h3>Switch your work patterns to Emails, Professional Networking, File sharing</h3>
             """, "neutral1.png"
              ) }}
-
-            {{ build_popup('neutral2', 'Current Productivity', """<h6>Tip:</h6>
-            <p>Your current productivity score is <span class='productivity_value'></span>.</p>
-            <p>To improve your productivity do more of  Email, Professional Networking, Certification </p>
-            """, "neutral2.png") }}
-
+             
+             {{ build_popup('neutral2', 'Current Productivity', """<h6>Tip:</h6>
+             <p>Your current productivity score is <span class='productivity_value'></span>.</p>
+             <p>To improve your productivity do more of  Email, Professional Networking, Certification </p>
+             """, "neutral1_x.png") }}
+             
+             
+            {{ build_popup('neutral3', 'Current Productivity',  """<h3>Your current productivity:</h3><span style='font-size:70px' class='productivity_value'></span>""") }}
             {{ build_popup('good1', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <br>
             <p>Hello!!!
@@ -63,10 +66,17 @@
                 Your producticity score is  <span class='productivity_value'></span>. This is impressive.Your are still 
                 within the normal productivity threshold.  KEEP IT UP!</p>
             """, "good2.png") }}
+            {{ build_popup('good3', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
+            <br>
+            <p>Hello!!!
+                Your producticity score is  <span class='productivity_value'></span>. This is impressive.Your are still 
+                within the normal productivity threshold.  KEEP IT UP!</p>
+            """) }}
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{ url_for('static', filename='javascript/chart.min.js') }}"></script>
         <script src="{{ url_for('static', filename='javascript/main.js') }} "></script>
         {% block javascript %}
         {% endblock %}

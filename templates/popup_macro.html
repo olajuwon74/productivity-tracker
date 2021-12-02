@@ -8,9 +8,19 @@
           
         </div>
         <div class="modal-body">
-          {% if image_context %}
-            <img src="{{ url_for('static', filename='images/'+image_context) }}">
-          {% endif %}
+            
+          {% if popup_type=="neutral2" %}
+            <div style="display: flex;"> 
+              <div style="height: 300px; width: 50%">
+                <img style="width: 200px; height: 250px;" src="{{ url_for('static', filename='images/'+image_context) }}">
+              </div>
+              <div style="height: 300px; width: 50%">
+                <canvas id="day_chart"></canvas>
+              </div>
+            </div>
+            {% elif image_context %}
+              <img src="{{ url_for('static', filename='images/'+image_context) }}">
+            {% endif %}
           {{ text_context|safe }}
         </div>
         <div class="modal-footer">

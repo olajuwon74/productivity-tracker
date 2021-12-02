@@ -37,7 +37,6 @@
 </div>
 
 {% endblock %} {% block javascript %}
-<script src="{{ url_for('static', filename='javascript/chart.min.js') }}"></script>
 <script>
   function constructSequenceChart(){
     const data = {{ top_sequences_with_percentage|safe }};
@@ -75,80 +74,6 @@
       sequenceChart.canvas.parentNode.style.height = '250px';
       sequenceChart.canvas.parentNode.style.width = '700px';
   }
-
-  function constructDayChart(){
-    const day_productivity_data = {{ lines_history|safe }};
-    const chartColors = { 	red: '#FC2D2D', 'orange': '#FFC234', 'green': '#1B7930',};
-    const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
-    const up = (ctx, value) => ctx.p0.parsed.y < ctx.p1.parsed.y ? value : undefined;
-    const day_productivity_chart = new Chart(day_chart, {
-        type: 'line',
-        data: {
-          labels: day_productivity_data.map(d => d.total_seconds),
-          datasets: [{
-                raw_data: day_productivity_data,
-                data: day_productivity_data.map(d => d.class_weight),
-                borderColor: chartColors.orange,
-                fill: false,
-                segment: {
-                  borderColor: ctx => up(ctx, chartColors.green) || down(ctx, chartColors.red),
-                },
-              spanGaps: true,
-            }]
-            },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          elements: {
-            point: {
-              pointStyle: 'circle',
-            }
-          },
-          plugins: {
-              title: {
-                display: true,
-                text: 'Productivity'
-              },
-              legend: {
-                display: false,
-              },
-              tooltip: {
-                callbacks: {
-                    usePointStyle: true,
-                    title: function(context,) {
-                      const {start_timestamp} = context[0].dataset.raw_data[context[0].dataIndex]
-                      return start_timestamp;
-                    },
-                    label: function(context) {
-                        const {class_weight, sequence} = context.dataset.raw_data[context.dataIndex]
-                        return [class_weight, sequence];
-                    },
-                }
-            },
-          },
-          interaction: {
-            intersect: false,
-          },
-          scales: {
-            x: {
-              display: true,
-              title: {
-                display: true,
-                text: 'timeline'
-              }
-            },
-            y: {
-              display: true,
-              title: {
-                display: true,
-                text: 'class weight'
-              },
-            }
-          }
-        },
-    },
-    )
-  };
 
   $(document).ready(function(){
     constructSequenceChart();

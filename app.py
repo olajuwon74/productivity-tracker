@@ -61,9 +61,6 @@ def productivity():
     total_counts = sum([count for _, count in top_sequences_with_counts])
     top_sequences_with_percentage = [{'id': sequence, 'value': (
         counts/total_counts)*100} for sequence, counts in top_sequences_with_counts] or [{'id': 'No data', 'value': 100}]
-
-    # for productivity line chart
-    lines_history = logics.get_history(for_productivity_charts=True)
     
     last_two_days = logics.get_last_two_days_history()
     yesterday_class_weight = last_two_days["yesterday"].get("class_weight") or 0
@@ -87,7 +84,6 @@ def productivity():
     }
     return render_template('productivity.html',
                 top_sequences_with_percentage=json.dumps(top_sequences_with_percentage),
-                lines_history=json.dumps(lines_history),
                 yesterday_class_weight=yesterday_class_weight,
                 today_class_weight=today_class_weight,
                 daily_change_class=daily_change_class,
@@ -103,9 +99,19 @@ def get_latest_productivity():
     latest_productivity = logics.get_current_line()
     return jsonify(latest_productivity)
 
+
+@app.route('/day_productivity')
+def get_day_productivity_chart_data():
+    """
+    Gets the productivity chart data for the current day
+    """
+    day_productivity = logics.get_history(for_productivity_charts=True)
+    return jsonify(day_productivity)
+
+
 @app.route("/")
 def home():
     """
     Loads the home page
     """
-    return redirect(url_for('view'))
+    return redirect(url_for('productivity'))
