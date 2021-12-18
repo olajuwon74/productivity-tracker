@@ -63,8 +63,8 @@ def productivity():
         counts/total_counts)*100} for sequence, counts in top_sequences_with_counts] or [{'id': 'No data', 'value': 100}]
     
     last_two_days = logics.get_last_two_days_history()
-    yesterday_class_weight = last_two_days["yesterday"].get("class_weight") or 0
-    today_class_weight = last_two_days["today"].get("class_weight") or 0
+    yesterday_class_weight = last_two_days["yesterday"].get("norm_prod") or 0
+    today_class_weight = last_two_days["today"].get("norm_prod") or 0
     daily_change = today_class_weight - yesterday_class_weight
     if daily_change > 0:
         daily_change_class = 'G'

@@ -120,7 +120,7 @@ def get_summarized_daily_history(start_date=None, end_date=None, for_productivit
 
         # since scoring is realtime, we need to take the last record of the day
         status = records[-1].get("cat")
-        class_weight = records[-1].get("class_weight")
+        class_weight = records[-1].get("norm_prod")
 
         if for_productivity_charts:
             summarized_history[day] = {

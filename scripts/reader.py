@@ -1,10 +1,10 @@
 import csv
 
-csv_file = open('records/simulated_log_updated.csv', 'r')
+csv_file = open('records/scaled_sim_log.csv', 'r')
 csv_reader = csv.DictReader(csv_file)
 
 #  local state variables
-header = ["start_timestamp", "sequence", "cat",
+header = ["start_timestamp", "sequence", "cat", "norm_prod",
           "weight_ema_4", "class_weight", "seconds", "total_seconds"]
 
 history = []
@@ -36,7 +36,7 @@ def get_next_record() -> dict:
 
     formatted_record = {}
     for col in get_header():
-        if col in ['class_weight', 'weight_ema_4']:
+        if col in ['class_weight', 'weight_ema_4', 'norm_prod']:
             formatted_record[col] = round(float(next_record.get(col, 0)), 1)
         else:
             formatted_record[col] = next_record.get(col)
