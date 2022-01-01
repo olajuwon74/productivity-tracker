@@ -59,7 +59,7 @@ function showmodal() {
   modal_element_title.style.backgroundColor = current_color;
 
   if (modal === 'neutral2') {
-    constructDayChart();
+    constructDayChart(comparison = true);
   }
   $(`#${modal}`).modal('show');
 
@@ -105,13 +105,14 @@ function showNotification() {
   notifyMe()
 }
 
-function constructDayChart() {
+function constructDayChart(comparison = false) {
   $.get("/day_productivity", function (data, status) {
 
 
-    const chartColors = { red: '#FC2D2D', orange: '#FFC234', green: '#1B7930', };
+    const chartColors = { red: '#FC2D2D', orange: '#FFC234', green: '#1B7930', black: '#000' };
 
     var canvas = document.getElementById("day_chart");
+
     var ctx = canvas.getContext("2d");
 
     // var gradientStroke = ctx.createLinearGradient(0, 1200, 0, 0);
@@ -144,9 +145,10 @@ function constructDayChart() {
       data: {
         labels: day_productivity_data.map(d => d.total_seconds),
         datasets: [{
+          label: "current",
           raw_data: day_productivity_data,
           data: day_productivity_data.map(d => d.norm_prod),
-          borderColor: function (context) {
+          borderColor: comparison ? chartColors.red : function (context) {
             const chart = context.chart;
             const { ctx, chartArea } = chart;
 
@@ -163,19 +165,31 @@ function constructDayChart() {
           spanGaps: true,
         },
         {
+          label: "",
           data: day_productivity_data.map(r => -0.64),
           pointRadius: 0,
           pointHitRadius: 0,
-          borderColor: chartColors.orange,
+          borderColor: chartColors.black,
           borderDash: [5, 10]
         },
         {
+          label: "",
           data: day_productivity_data.map(r => 0.17),
           pointRadius: 0,
           pointHitRadius: 0,
-          borderColor: chartColors.orange,
+          borderColor: chartColors.black,
           borderDash: [5, 10]
         },
+        comparison? 
+        {
+          label: "normal",
+          data: day_productivity_data.map((d, index) => day_productivity_data.length-1==index? Math.abs(d.norm_prod):d.norm_prod+0.1 ),
+          pointRadius: 0,
+          pointHitRadius: 0,
+          borderColor: chartColors.green,
+          // borderDash: [5, 10]
+        }
+          :{}
         ]
       },
       options: {
@@ -189,10 +203,16 @@ function constructDayChart() {
         plugins: {
           title: {
             display: true,
-            text: 'Productivity'
+            text: comparison ? "Normal vs Current": 'Productivity'
           },
           legend: {
-            display: false,
+            display: comparison,
+            labels:{
+              filter: function(item, chart) {
+                // Logic to remove a particular legend item goes here
+                return item.text!=="";
+            }
+            }
           },
           tooltip: {
             callbacks: {
@@ -225,7 +245,7 @@ function constructDayChart() {
             display: true,
             title: {
               display: true,
-              text: 'timeline'
+              text: 'Timeline'
             }
           },
           y: {
@@ -234,7 +254,7 @@ function constructDayChart() {
             display: true,
             title: {
               display: true,
-              text: 'productivity'
+              text: 'Productivity'
             },
           }
         }
