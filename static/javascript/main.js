@@ -43,7 +43,7 @@ function showmodal() {
   if (window.location.pathname !== '/logs' || window.location.search) {
     return;
   }
-  const modalsId = { 'P': ['bad1', 'bad2', 'bad3'], 'G': ['good1', 'good2', 'good3'], 'N': ['neutral1', 'neutral2', 'neutral3'] }
+  const modalsId = { 'P': ['bad1', 'bad2', 'bad3', 'bad4', 'bad5', ], 'G': ['good1', 'good2', 'good3', 'good4', 'good5'], 'N': ['neutral1', 'neutral2', 'neutral3'] }
   const color_status_map = Object.fromEntries(Object.entries(status_color_map).map(a => a.reverse()))
   const current_color = rgbToHex(document.getElementById("productivity_status").style.backgroundColor);
 
@@ -90,7 +90,7 @@ function showNotification() {
       const current_status = color_status_map[current_color]
       const notification_messages = {
         'P': 'Productivity is going down!',
-        'G': 'You are doing great!',
+        'G': 'Productivity is going up!',
         'N': 'You\'re maintaining productivity!',
       }
       var notification = new Notification("PBC", {
@@ -146,6 +146,7 @@ function constructDayChart(comparison = false) {
         labels: day_productivity_data.map(d => d.total_seconds),
         datasets: [{
           label: "current",
+          // pointStyle: 'line',
           raw_data: day_productivity_data,
           data: day_productivity_data.map(d => d.norm_prod),
           borderColor: comparison ? chartColors.red : function (context) {
@@ -165,15 +166,15 @@ function constructDayChart(comparison = false) {
           spanGaps: true,
         },
         {
-          label: "",
+          label: "lower threshold",
           data: day_productivity_data.map(r => -0.64),
           pointRadius: 0,
           pointHitRadius: 0,
           borderColor: chartColors.black,
-          borderDash: [5, 10]
+          borderDash: [5, 10],
         },
         {
-          label: "",
+          label: "upper threshold",
           data: day_productivity_data.map(r => 0.17),
           pointRadius: 0,
           pointHitRadius: 0,
@@ -183,7 +184,7 @@ function constructDayChart(comparison = false) {
         comparison? 
         {
           label: "normal",
-          data: day_productivity_data.map((d, index) => day_productivity_data.length-1==index? Math.abs(d.norm_prod):d.norm_prod+0.1 ),
+          data: day_productivity_data.map((d, index) => day_productivity_data.length-1==index? Math.abs(d.norm_prod):(Math.random() * (0.99 - 0.2) + 0.2).toFixed(2)),
           pointRadius: 0,
           pointHitRadius: 0,
           borderColor: chartColors.green,
@@ -206,11 +207,15 @@ function constructDayChart(comparison = false) {
             text: comparison ? "Normal vs Current": 'Productivity'
           },
           legend: {
-            display: comparison,
+            // display: comparison,
             labels:{
+              // usePointStyle: true,
               filter: function(item, chart) {
                 // Logic to remove a particular legend item goes here
-                return item.text!=="";
+                if (comparison){
+                  return item.text!=="";
+                }
+                return item.text;
             }
             }
           },

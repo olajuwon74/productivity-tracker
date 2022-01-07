@@ -14,7 +14,7 @@
                 <canvas id="day_chart"></canvas>
               </div>
             {% elif image_context %}
-              <img src="{{ url_for('static', filename='images/'+image_context) }}">
+              <img src="{{ url_for('static', filename='images/'+image_context) }}" style="max-width: 400px;">
             {% endif %}
           {{ text_context|safe }}
         </div>
