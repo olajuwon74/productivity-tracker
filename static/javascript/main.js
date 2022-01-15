@@ -43,9 +43,10 @@ function showmodal() {
   if (window.location.pathname !== '/logs' || window.location.search) {
     return;
   }
-  const modalsId = { 'P': ['bad1', 'bad2', 'bad3', 'bad4', 'bad5', ], 'G': ['good1', 'good2', 'good3', 'good4', 'good5'], 'N': ['neutral1', 'neutral2', 'neutral3'] }
+  const modalsId = { 'P': ['bad1', 'bad2', 'bad3', 'bad4', 'bad5', 'bad6', 'bad7', 'bad8', 'bad9', 'bad10',  'bad11', ], 'G': ['good1', 'good2', 'good3', 'good4', 'good5'], 'N': ['neutral1', 'neutral2', 'neutral3'] }
   const color_status_map = Object.fromEntries(Object.entries(status_color_map).map(a => a.reverse()))
-  const current_color = rgbToHex(document.getElementById("productivity_status").style.backgroundColor);
+  // const current_color = rgbToHex(document.getElementById("productivity_status").style.backgroundColor);
+  let current_color = '#FFC234'
 
   if (!current_color) {
     return;
@@ -53,13 +54,14 @@ function showmodal() {
   const current_status = color_status_map[current_color];
   const current_modals = modalsId[current_status];
 
-  console.log(current_modals);
   const modal = current_modals[Math.floor(Math.random() * current_modals.length)];
   const modal_element_title = document.getElementById(modal + 'title');
   modal_element_title.style.backgroundColor = current_color;
 
-  if (modal === 'neutral2') {
-    constructDayChart(comparison = true);
+  if (modal === 'neutral2' || modal === 'neutral1') {
+    console.log("constructing")
+    console.log(modal)
+    constructDayChart(comparison = true, element_id='day_chart '+modal);
   }
   $(`#${modal}`).modal('show');
 
@@ -105,13 +107,13 @@ function showNotification() {
   notifyMe()
 }
 
-function constructDayChart(comparison = false) {
+function constructDayChart(comparison = false, element_id="day_chart") {
   $.get("/day_productivity", function (data, status) {
 
 
     const chartColors = { red: '#FC2D2D', orange: '#FFC234', green: '#1B7930', black: '#000' };
 
-    var canvas = document.getElementById("day_chart");
+    var canvas = document.getElementById(element_id);
 
     var ctx = canvas.getContext("2d");
 

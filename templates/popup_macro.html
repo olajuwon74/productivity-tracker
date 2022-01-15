@@ -9,9 +9,9 @@
         </div>
         <div class="modal-body">
             
-          {% if popup_type=="neutral2" %}
+          {% if popup_type in ["neutral2", "neutral1"] %}
               <div style="height: 300px; width: 100%">
-                <canvas id="day_chart"></canvas>
+                <canvas id="day_chart {{ popup_type }}"></canvas>
               </div>
             {% elif image_context %}
               <img src="{{ url_for('static', filename='images/'+image_context) }}" style="max-width: 400px;">
