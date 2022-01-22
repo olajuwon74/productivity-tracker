@@ -30,17 +30,17 @@
             {% endblock %}
         </main>
         <div class="popups">
-            {{ build_popup('bad1', 'Low Productivity', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
+            {{ build_popup('bad1', 'High Productivity Decrease', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <p>Your current work pattern is: Social, Shopping.</p>
             <h6>Tips:</h6>
             <p>Switch your work pattern to Email, Professional Networking, Certification to improve your productivity</p>
             """, "bad1.png") }}
-            {{ build_popup('bad2', 'Low Productivity', """<h6>Switch your work patterns to email, Professional Networking, file sharing.</h6>
+            {{ build_popup('bad2', 'High Productivity Decrease', """<h6>Switch your work patterns to email, Professional Networking, file sharing.</h6>
             """, "bad2.png") }}
-            {{ build_popup('bad3', 'Low Productivity', """<h4>Hello Jack!!! Your productivity is going down.<br> <br> Switch your work patterns to email, Professional Networking, file sharing!</h4>
+            {{ build_popup('bad3', 'High Productivity Decrease', """<h4>Hello Jack!!! Your productivity is going down.<br> <br> Switch your work patterns to email, Professional Networking, file sharing!</h4>
             """) }}
-            {{ build_popup('bad4', 'Low Productivity',  """<h3>Your current productivity:</h3><span style='font-size:70px' class='productivity_value'></span>""") }}
-            {{ build_popup('bad5', 'Low Productivity',  """<h3><u>Work Standard</u></span>
+            {{ build_popup('bad4', 'High Productivity Decrease',  """<h3>Your current productivity:</h3><span style='font-size:70px' class='productivity_value'></span>""") }}
+            {{ build_popup('bad5', 'High Productivity Decrease',  """<h3><u>Work Standard</u></span>
             <br>
             <h4>You seem to have more of shopping and socials in your work patterns.</h4>
             <br>
@@ -48,18 +48,18 @@
             <br>
             <h4>You should focus on email, professional networking, and office portals to improve your productivity.</h4>
             """) }}
-            {{ build_popup('bad6', 'Low Productivity',  """<h5>Your current productivity score: <span style='font-size:20px' class='productivity_value'></span></h5><br><h5>Your current work patterns: Social, Shopping, Games, Entertainment</h5>""") }}
-            {{ build_popup('bad7', 'Low Productivity',  """<h5>Current productivity: <span style='font-size:20px' class='productivity_value'></span></h5><br><h5>You are not allowed to engage in Social, Shopping, Games, Entertainment</h5>""") }}
-            {{ build_popup('bad8', 'Low Productivity',  """<h5>Current productivity: <span style='font-size:20px' class='productivity_value'></span></h5><br><h5>To avoid further decrease, do not engage in social, shopping, games, and entertainment activities.</h5>""") }}
-            {{ build_popup('bad9', 'Low Productivity', """<h1></h1>""", "bad1.png") }}
-            {{ build_popup('bad10', 'Low Productivity',  """<h3><u>Work Standard</u></span>
+            {{ build_popup('bad6', 'High Productivity Decrease',  """<h5>Your current productivity score: <span style='font-size:20px' class='productivity_value'></span></h5><br><h5>Your current work patterns: Social, Shopping, Games, Entertainment</h5>""") }}
+            {{ build_popup('bad7', 'High Productivity Decrease',  """<h5>Current productivity: <span style='font-size:20px' class='productivity_value'></span></h5><br><h5>You are not allowed to engage in Social, Shopping, Games, Entertainment</h5>""") }}
+            {{ build_popup('bad8', 'High Productivity Decrease',  """<h5>Current productivity: <span style='font-size:20px' class='productivity_value'></span></h5><br><h5>To avoid further decrease, do not engage in social, shopping, games, and entertainment activities.</h5>""") }}
+            {{ build_popup('bad9', 'High Productivity Decrease', """<h1></h1>""", "bad1.png") }}
+            {{ build_popup('bad10', 'High Productivity Decrease',  """<h3><u>Work Standard</u></span>
             <br>
             <h4>You have more of social, shopping, games, and entertainment in your work patterns.</h4>
             <br>
             <h4>To avoid further decrease in productivity, switch to email, professional networking and office portals.</h4>
             """) }}
             
-            {{ build_popup('bad11', 'Low Productivity',  """<h3><u>Work Standard</u></span>
+            {{ build_popup('bad11', 'High Productivity Decrease',  """<h3><u>Work Standard</u></span>
             <br>
             <h4>You have more of social, shopping, games, and entertainment in your work patterns.</h4>
             <br>
@@ -67,38 +67,37 @@
             """) }}
             
             
-            {{ build_popup('neutral1', 'Warning!!!',  """<p>Switch your work patterns to Emails, Professional Networking, File sharing</p>
+            {{ build_popup('neutral1', 'Little Productivity Decrease',  """<p>Switch your work patterns to Emails, Professional Networking, File sharing</p>
             """
              ) }}
-             {{ build_popup('neutral2', 'Warning!!!', """<h6>Tip:</h6>
+             {{ build_popup('neutral2', 'Little Productivity Decrease', """<h6>Tip:</h6>
              <p>Your current productivity score is <span class='productivity_value'></span>.</p>
              <p>To improve your productivity do more of  Email, Professional Networking, Certification </p>
              """) }}
-             {{ build_popup('neutral3', 'Warning!!!',  """<h3>Your current productivity:</h3><span style='font-size:70px' class='productivity_value'></span>""") }}
+             {{ build_popup('neutral3', 'Little Productivity Decrease',  """<h3>Your current productivity:</h3><span style='font-size:70px' class='productivity_value'></span>""") }}
              
              
-            {{ build_popup('good1', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
+            {{ build_popup('good1', 'Good Productivity', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <br>
             <p>Hello Jack!!!
                 Your producticity score is  <span class='productivity_value'></span>.
                 This is impressive.Your are still within the normal productivity threshold.  KEEP IT UP</p>
             """, "good1.png") }}
 
-            {{ build_popup('good2', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
+            {{ build_popup('good2', 'Good Productivity', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <br>
             <p>Hello Jack!!!
                 Your producticity score is  <span class='productivity_value'></span>. This is impressive.Your are still 
                 within the normal productivity threshold.  KEEP IT UP!</p>
             """, "good2.png") }}
-            {{ build_popup('good3', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
+            {{ build_popup('good3', 'Good Productivity', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             <br>
             <p>Hello Jack!!!
                 Your producticity score is  <span class='productivity_value'></span>. This is impressive.Your are still 
                 within the normal productivity threshold.  KEEP IT UP!</p>
             """) }}
-            {{ build_popup('good4', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
-            """, "grey_scaled_smiley.jpeg") }}
-            {{ build_popup('good5', 'Great!!!', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
+            {{ build_popup('good4', 'Good Productivity', """<p></p>""", "grey_scaled_smiley.jpeg") }}
+            {{ build_popup('good5', 'Good Productivity', """<h5>Your current productivity is  <span class='productivity_value'></span></h5>
             """, "animated-emoticons.gif") }}
         </div>
 

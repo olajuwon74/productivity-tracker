@@ -45,8 +45,7 @@ function showmodal() {
   }
   const modalsId = { 'P': ['bad1', 'bad2', 'bad3', 'bad4', 'bad5', 'bad6', 'bad7', 'bad8', 'bad9', 'bad10',  'bad11', ], 'G': ['good1', 'good2', 'good3', 'good4', 'good5'], 'N': ['neutral1', 'neutral2', 'neutral3'] }
   const color_status_map = Object.fromEntries(Object.entries(status_color_map).map(a => a.reverse()))
-  // const current_color = rgbToHex(document.getElementById("productivity_status").style.backgroundColor);
-  let current_color = '#FFC234'
+  const current_color = rgbToHex(document.getElementById("productivity_status").style.backgroundColor);
 
   if (!current_color) {
     return;
@@ -206,7 +205,7 @@ function constructDayChart(comparison = false, element_id="day_chart") {
         plugins: {
           title: {
             display: true,
-            text: comparison ? "Normal vs Current": 'Productivity'
+            text: comparison ? "Normal vs Current": 'All Productivity Graph'
           },
           legend: {
             // display: comparison,
